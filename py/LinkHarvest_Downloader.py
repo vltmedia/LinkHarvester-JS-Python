@@ -1,6 +1,6 @@
 # LinkeHarvest_Downloader.py --input C:/temp/thing.csv --output C:/temp/out --downloadcount 2
-# LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --downloadcount 2
-# LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 --searchstrings USA,En 
+# LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest  --starting 0 --ending 5 --searchstrings USA,En 
+# LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 --searchstrings USA,En 
 
 from demeter_dl.Core import HarvesterEngine
 
@@ -10,6 +10,7 @@ from util import util
 import os
 import csv
 import json
+import time
 
 class LinkHarvester_DownloadManager:
 
@@ -20,6 +21,8 @@ class LinkHarvester_DownloadManager:
         self.LinkObjects = []
         
         self.opt = BaseOptions.BaseOptions().parse()
+        self.start_time = time.time()
+
         self.CheckIfOutputExists()
         self.GetFileType()
         self.ReadInfile()
@@ -91,7 +94,9 @@ class LinkHarvester_DownloadManager:
                     shoulduse = True
         
         return shoulduse
-                    
+    def PrintCurrentRunTime(self):
+        print("!!!!!--- Current Runtime %s seconds ---!!!!" % (time.time() - self.start_time))
+              
     def ProcessLinkArray(self):
         endingIndex = self.opt.ending
         skipped = []
@@ -106,8 +111,11 @@ class LinkHarvester_DownloadManager:
             if self.LinkObjects[indexx].status == 0:
                 CheckRun = self.CheckToSkipBasedOnName(self.LinkObjects[indexx].filename)
                 if CheckRun == True:
+                    start_time = time.time()
                     print("Downloading "+str(indexx + 1)+" of "+str(endingIndex ))
                     self.LinkObjects[indexx].DownloadLink()
+                    print("--- Download Took %s seconds ---" % (time.time() - start_time))
+                    self.PrintCurrentRunTime()
                     self.UpdateInputFile()
                 else:
                     skipped.append(self.LinkObjects[indexx])
@@ -123,6 +131,7 @@ class LinkHarvester_DownloadManager:
         print("Downloaded | ", len(self.LinkObjects) - len(skipped))
         
     
+        
     def UpdateInputFile(self):
         if self.Filetype == "csv":
             self.UpdateCSVFile()

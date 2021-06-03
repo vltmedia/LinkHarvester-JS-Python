@@ -88,7 +88,8 @@ A Python 3.5+ utility app to process and download the resulting links from the J
 ```shell
 LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 
 
-LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --starting 0 --ending 5 
+LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --starting 0 --ending 5 --searchstrings USA,En 
+
 
 ```
 

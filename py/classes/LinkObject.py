@@ -37,10 +37,14 @@ class LinkObject:
             print("Skipping | ", self.filename)
         else:
             self.status = 0
-        
+    def CheckTempFolder(self):
+        if not os.path.exists(self.opt.output + '/temp'):
+            os.mkdir(self.opt.output + '/temp')
+            
     def DownloadLink(self):
         if self.status == 0:
-            download_instance = HarvesterEngine(self.url, file_name=self.filename, location=self.outputpath)  # This will use the custom options
+            self.CheckTempFolder()
+            download_instance = HarvesterEngine(self.url, file_name=self.filename, location=self.outputpath, part_location=self.opt.output + '/temp')  # This will use the custom options
             # print("Downloading Info | ", download_instance.Get_info())
             print("----------------------------------------------------------")
             print("----------------------------------------------------------")
