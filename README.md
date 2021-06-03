@@ -94,10 +94,11 @@ LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --
 
 ## Arguments
 
-| Name       | Description                                                  | Example                                     |
-| ---------- | ------------------------------------------------------------ | ------------------------------------------- |
-| --input    | JSON, or CSV file to process. Created by the Link Harvester JS class above. | C:/temp/LinksHarvested_2021-6-3_122311.json |
-| --output   | Directory to save the resulting downloaded files to.         | C:/temp/LinkHarvest                         |
-| --starting | The first index to download.                                 | 0                                           |
-| --ending   | The last index to download.                                  | 10                                          |
+| Name            | Description                                                  | Example                                     |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| --input         | JSON, or CSV file to process. Created by the Link Harvester JS class above. | C:/temp/LinksHarvested_2021-6-3_122311.json |
+| --output        | Directory to save the resulting downloaded files to.         | C:/temp/LinkHarvest                         |
+| --starting      | The first index to download.                                 | 0                                           |
+| --ending        | The last index to download.                                  | 10                                          |
+| --searchstrings | comma sepearted strings to search for in the file names      | EN,USA                                      |
 

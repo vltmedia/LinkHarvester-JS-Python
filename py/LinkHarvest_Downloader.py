@@ -1,6 +1,6 @@
 # LinkeHarvest_Downloader.py --input C:/temp/thing.csv --output C:/temp/out --downloadcount 2
 # LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --downloadcount 2
-# LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 --downloadcount 2
+# LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 --searchstrings USA,En 
 
 from demeter_dl.Core import HarvesterEngine
 
@@ -26,6 +26,7 @@ class LinkHarvester_DownloadManager:
         self.ProcessLinkArray()
         
         
+       
     def CheckIfOutputExists(self):
         if not os.path.exists(self.opt.output):
             os.mkdir(self.opt.output)
@@ -81,9 +82,20 @@ class LinkHarvester_DownloadManager:
         download_instance = HarvesterEngine(url)  # This will use the default options
         print(download_instance.Get_info())
         
-    
+    def CheckToSkipBasedOnName(self, filepath):
+        shoulduse = False
+        if ',' in self.opt.searchstrings:
+            splitt = self.opt.searchstrings.split(',')
+            for stringg in splitt:
+                if stringg in filepath:
+                    shoulduse = True
+        
+        return shoulduse
+                    
     def ProcessLinkArray(self):
         endingIndex = self.opt.ending
+        skipped = []
+        
         if endingIndex == 9999:
             endingIndex = len(self.LinkObjects) - 1
         for indexx in range(self.opt.starting , endingIndex):
@@ -91,15 +103,53 @@ class LinkHarvester_DownloadManager:
             # Start Processing here!
             # -----------------------------------------------
             # -----------------------------------------------
-            print("Downloading "+str(indexx + 1)+" of "+str(endingIndex ))
-            self.LinkObjects[indexx].DownloadLink()
+            if self.LinkObjects[indexx].status == 0:
+                CheckRun = self.CheckToSkipBasedOnName(self.LinkObjects[indexx].filename)
+                if CheckRun == True:
+                    print("Downloading "+str(indexx + 1)+" of "+str(endingIndex ))
+                    self.LinkObjects[indexx].DownloadLink()
+                    self.UpdateInputFile()
+                else:
+                    skipped.append(self.LinkObjects[indexx])
+            else:
+                skipped.append(self.LinkObjects[indexx])
             # self.GetFileInfo(self.LinkObjects[indexx].url)
             
             
             # -----------------------------------------------
             # -----------------------------------------------
+        print("Search Terms | "+ self.opt.searchstrings)
+        print("Skipped | "+ str(len(skipped)) + " / " + str(len(self.LinkObjects)))
+        print("Downloaded | ", len(self.LinkObjects) - len(skipped))
+        
     
+    def UpdateInputFile(self):
+        if self.Filetype == "csv":
+            self.UpdateCSVFile()
+        if self.Filetype == "json":
+            self.UpdateJSONFile()
+    
+    def UpdateJSONFile(self):
+        outputjs = {"Links": []}
+        for linkobj in self.LinkObjects:
+            outjs = {"url": linkobj.url, "filename": linkobj.filename, "extension": linkobj.extension, "status": linkobj.status}
+            outputjs['Links'].append(outjs)
+        with open(self.opt.input, 'w') as outfile:
+            json.dump(outputjs, outfile)
+        outfile.close()
+                
+    def UpdateCSVFile(self):
+        outputcsv = "url,filename,extension,status\n"
+        outputcsvarray = ["url,filename,extension,status"]
+        for linkobj in self.LinkObjects:
+            outstring = outputcsv + linkobj.url +","+ linkobj.filename +","+linkobj.extension +","+str(linkobj.status) + "\n"
+            outstring1 = linkobj.url +","+ linkobj.filename +","+linkobj.extension +","+str(linkobj.status)
+            outputcsvarray.append(outstring1)
+            outputcsv = outstring
             
+        with open(self.opt.input, 'w') as outfile:
+            outfile.write(outputcsv)
+        outfile.close()
             
         
 def main():
