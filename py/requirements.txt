@@ -1,0 +1,15 @@
+certifi==2021.5.30
+chardet==4.0.0
+click==8.0.1
+colorama==0.4.4
+Demeter-Dl==1.0.1
+ffmpy==0.3.0
+idna==2.10
+importlib-metadata==4.4.0
+pafy==0.5.5
+requests==2.25.1
+tqdm==4.61.0
+typing-extensions==3.10.0.0
+urllib3==1.26.5
+youtube-dl==2021.5.16
+zipp==3.4.1
