@@ -24,7 +24,7 @@ Harvest links from the children of an element you specify on a webpage by using 
 
 
 
-# *Usage:*
+# Usage:
 
 ```javascript
 var LinkHarvest_ = new LinkHarvest();
