@@ -50,19 +50,15 @@ LinkHarvest_.DownloadCSV();
 
 # Functions
 
-| Name              | Description                                                  | Args                                                         |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| GetLinksFromXpath | Get the children ```<a href>``` from the Xpath provided      | xpath = string                                               |
-| DownloadJson      | Download Links document as Json file                         | -                                                            |
-| DownloadCSV       | Download Links document as CSV                               | -                                                            |
-| LinksToJson       | Get the Links as a JSON                                      | -                                                            |
-| LinksToCSV        | Get the Links as a CSV                                       | -                                                            |
-| GetURLExtension   | Get the Extension from the URL                               | url= string                                                  |
-| GetDateTime       | Get the current Date Time in a ```YMMDD_HHmmss``` format     | -                                                            |
-| links             | Array containing the current links in their url forms.       | -                                                            |
-| linksjs           | Array containing the current links in their JSON object forms. | -                                                            |
-| csvstring         | If you ran ```LinksToCSV``` or ```DownloadCSV ``` this will contain the current CSV string representing the links. | -                                                            |
-| csvheader         | Change this if you want to change the CSV header output.     | default = ```LinkHarvester_.csvheader = "url,filename,extension,status";``` |
+| Name              | Description                                              | Args           |
+| ----------------- | -------------------------------------------------------- | -------------- |
+| GetLinksFromXpath | Get the children ```<a href>``` from the Xpath provided  | xpath = string |
+| DownloadJson      | Download Links document as Json file                     | -              |
+| DownloadCSV       | Download Links document as CSV                           | -              |
+| LinksToJson       | Get the Links as a JSON                                  | -              |
+| LinksToCSV        | Get the Links as a CSV                                   | -              |
+| GetURLExtension   | Get the Extension from the URL                           | url= string    |
+| GetDateTime       | Get the current Date Time in a ```YMMDD_HHmmss``` format | -              |
 
 
 
