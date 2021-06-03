@@ -9,7 +9,7 @@ Harvest links from the children of an element you specify on a webpage by using 
 
 - User can receive a JSON or CSV file if needed.
 - User can download a JSON or CSV with ```LinkHarvest_.DownloadJson()``` or ```LinkHarvest_.DownloadCSV()```
-- User can download all the links in the resulting files with a Python 3.5+ app.  Example:  ```py/LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 ```.
+- User can download all the links in the resulting files with a Python 3.5+ app.  Example:  ```py/LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 ```.
 
 
 
@@ -86,9 +86,9 @@ A Python 3.5+ utility app to process and download the resulting links from the J
 ## CLI Usage:
 
 ```shell
-LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 
+LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 
 
-LinkeHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --starting 0 --ending 5 
+LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --starting 0 --ending 5 
 
 ```
 
