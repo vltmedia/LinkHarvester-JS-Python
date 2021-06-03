@@ -58,6 +58,7 @@ class LinkHarvester_DownloadManager:
                 self.CSVArrayToLinksArray()
                 
             
+            
             if self.Filetype == 'json':
                 with open(self.opt.input) as f:
                     self.JSONObject = json.load(f)
