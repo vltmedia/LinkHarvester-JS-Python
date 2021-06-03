@@ -1,6 +1,10 @@
 # Link Harvester JS
+<img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23323330.svg??style=flat&logo=appveyor&logoColor=%23F7DF1E" />
+<a href="https://github.com/vltmedia/LinkHarvesterJS"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white" /></a>
 
-Harvest links from the children of an element you specify by Xpath.
+# Description
+
+Harvest links from the children of an element you specify on a webpage by using Xpath, which can be accessed through the inspect element function.
 
 - User can receive a JSON or CSV file if needed.
 - User can download a JSON or CSV with ```LinkHarvest_.DownloadJson()``` or ```LinkHarvest_.DownloadCSV()```
