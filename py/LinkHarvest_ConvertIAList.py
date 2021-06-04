@@ -69,8 +69,8 @@ class LinkHarvest_ConvertIAList:
         outputcsv = "url,filename,extension,status\n"
         outputcsvarray = ["url,filename,extension,status"]
         for linkobj in self.LinkObjects:
-            outstring = outputcsv + linkobj.url +","+ linkobj.filename +","+linkobj.extension +","+str(linkobj.status) + "\n"
-            outstring1 = linkobj.url +","+ linkobj.filename +","+linkobj.extension +","+str(linkobj.status)
+            outstring = outputcsv + linkobj.url +","+ linkobj.filename.replace(',',"_") +","+linkobj.extension +","+str(linkobj.status) + "\n"
+            outstring1 = linkobj.url +","+ linkobj.filename.replace(',',"_") +","+linkobj.extension +","+str(linkobj.status)
             outputcsvarray.append(outstring1)
             outputcsv = outstring
             

@@ -6,7 +6,7 @@ class LinkObject:
     '''Represents any school member.'''
     def __init__(self,url, filename, extension, status, options):
         self.url = url
-        self.filename = filename
+        self.filename = filename.replace(',',"_")
         self.extension = extension
         self.status = status
         self.outputpath = os.path.join(options.output, filename)
