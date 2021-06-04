@@ -89,6 +89,7 @@ A Python 3.5+ utility app to process and download the resulting links from the J
 LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.json --output C:/temp/LinkHarvest --starting 0 --ending 5 
 
 LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --output C:/temp/LinkHarvest --starting 0 --ending 5 --searchstrings USA,En 
+LinkHarvest_Downloader.py --input psxdump.csv --output D:/game/LinkHarvest/psx --starting 0 --searchstrings USA,En 
 
 
 ```
@@ -118,7 +119,7 @@ A Collection from Internet Archive is defined as ```https://archive.org/details/
 ## CLI Usage:
 
 ```shell
-python LinkHarvest_ConvertIAList.py --input "C:\temp\listdump.txt" --output "C:\temp\listdump.json" --collection "CAT_DATASET"  --exporttype json
+python LinkHarvest_ConvertIAList.py --input "C:\temp\listdump.txt" --output "C:\temp\listdump.json" --collection "CAT_DATASET"  --exporttype json --ignorestrings "tiff,flowers"
 ```
 
 ## Arguments
@@ -129,5 +130,6 @@ python LinkHarvest_ConvertIAList.py --input "C:\temp\listdump.txt" --output "C:\
 | --output        | Output file to write to.         | C:\temp\listdump.json                         |
 | --collection      | The collection you're downloading from.                                 | CAT_DATASET                                           |
 | --exporttype       | extension to save out as (json, csv)                                  | json or csv                                          |
+| --ignorestrings       | comma sepearted strings to ignore in the file names                            | (Demo),Poop,.tiff                                         |
 
 

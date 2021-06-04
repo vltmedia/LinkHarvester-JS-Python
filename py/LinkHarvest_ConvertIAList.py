@@ -16,6 +16,9 @@ class LinkHarvest_ConvertIAList:
         self.LinkObjects = []
         self.IAUrl = 'https://archive.org/download/' + collectionpath + '/'
         self.opt = InternetArchiveOptions.InternetArchiveOptions().parse()
+        self.ignore = [self.opt.ignorestrings]
+        if ',' in self.opt.ignorestrings:
+            self.ignore = self.opt.ignorestrings.split(',')
         
 
                 
@@ -42,11 +45,16 @@ class LinkHarvest_ConvertIAList:
         for line in Lines:
             cleanedline = line.strip()
             line = cleanedline
-            if '(Demo)' not in line and 'Action Replay' not in line:
-                
-                urlencode = urllib.parse.quote(line.strip())
-                baseurl = self.IAUrl + urlencode
-                self.CreateLinkObject(baseurl, line, os.path.splitext(line)[1], 0)
+            for ignorestring in self.ignore:
+                    
+                # if '(Demo)' not in line and 'Action Replay' not in line:
+                if ignorestring not in line:
+                    
+                    urlencode = urllib.parse.quote(line.strip())
+                    baseurl = self.IAUrl + urlencode
+                    self.CreateLinkObject(baseurl, line, os.path.splitext(line)[1], 0)
+                else:
+                    print("Ignoring : " , line.strip())
         self.WriteFile()              
                 
     # def CreateObject

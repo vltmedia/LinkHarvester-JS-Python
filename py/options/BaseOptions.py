@@ -22,7 +22,6 @@ class BaseOptions():
         parser.add_argument('--starting', type=int, default=0, help='starting index of which to process the Links Document')
         parser.add_argument('--ending', type=int, default=9999, help='ending index of which to process the Links Document')
         parser.add_argument('--searchstrings', type=str, default='', help='comma sepearted strings to search for in the file names')
-        parser.add_argument('--ignorestrings', type=str, default='', help='comma sepearted strings to ignore in the file names')
 
         self.initialized = True
         return parser

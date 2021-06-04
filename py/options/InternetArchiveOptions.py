@@ -11,5 +11,7 @@ class InternetArchiveOptions(BaseOptions):
         parser = BaseOptions.initialize(self, parser)  # define shared options
         parser.add_argument('--collection', type=str, required=True, help='collection name of the Internet Archive colllection to download')
         parser.add_argument('--exporttype', type=str, required=True, help='extension to save out as (json, csv)')
+        parser.add_argument('--ignorestrings', type=str, default='', help='comma sepearted strings to ignore in the file names')
+        
         self.isTrain = False
         return parser
