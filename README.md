@@ -114,7 +114,8 @@ A Collection from Internet Archive is defined as ```https://archive.org/details/
 ## Install
 
 - Change directory to ```\py ``` .        ```cd \py```
-
+- Run ```pip install -r requirements.txt``` or  ```pip3 install -r requirements.txt```
+- 
 ## CLI Usage:
 
 ```shell
