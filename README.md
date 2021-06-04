@@ -103,3 +103,31 @@ LinkHarvest_Downloader.py --input C:/temp/LinksHarvested_2021-6-3_122311.csv --o
 | --ending        | The last index to download.                                  | 10                                          |
 | --searchstrings | comma sepearted strings to search for in the file names      | EN,USA                                      |
 
+
+# Internet Archive List To Link Harvester
+<img alt="Python" src="https://img.shields.io/badge/python-%2314354C.svg?style=flat&logo=python&logoColor=white"/>
+
+A Python 3.5+ utility app to process a .txt file containing a list of filenames created by the Internet Archive CLI using ```ia list collectioname > listdump.txt ``` located in ```\py\LinkHarvest_ConvertIAList.py```.
+
+A Collection from Internet Archive is defined as ```https://archive.org/details/CAT_DATASET``` <- would be ```CAT_DATASET```.
+
+## Install
+
+- Change directory to ```\py ``` .        ```cd \py```
+
+## CLI Usage:
+
+```shell
+python LinkHarvest_ConvertIAList.py --input "C:\temp\listdump.txt" --output "C:\temp\listdump.json" --collection "CAT_DATASET"  --exporttype json
+```
+
+## Arguments
+
+| Name            | Description                                                  | Example                                     |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| --input         | JSON, or CSV file to process. Created by the Link Harvester JS class above. | C:\temp\listdump.txt |
+| --output        | Output file to write to.         | C:\temp\listdump.json                         |
+| --collection      | The collection you're downloading from.                                 | CAT_DATASET                                           |
+| --exporttype       | extension to save out as (json, csv)                                  | json or csv                                          |
+
+
