@@ -46,15 +46,17 @@ class LinkHarvest_ConvertIAList:
             cleanedline = line.strip()
             line = cleanedline
             for ignorestring in self.ignore:
-                    
+                goodtouse = True
                 # if '(Demo)' not in line and 'Action Replay' not in line:
-                if ignorestring not in line:
-                    
-                    urlencode = urllib.parse.quote(line.strip())
-                    baseurl = self.IAUrl + urlencode
-                    self.CreateLinkObject(baseurl, line, os.path.splitext(line)[1], 0)
-                else:
-                    print("Ignoring : " , line.strip())
+                if ignorestring in line:
+                    goodtouse = False
+            if goodtouse:    
+                urlencode = urllib.parse.quote(line.strip())
+                baseurl = self.IAUrl + urlencode
+                self.CreateLinkObject(baseurl, line, os.path.splitext(line)[1], 0)
+            else:
+                print("Ignoring : " , line.strip())
+                
         self.WriteFile()              
                 
     # def CreateObject
